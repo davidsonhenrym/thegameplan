@@ -4,8 +4,125 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About — The Game Plan</title>
-  <meta name="description" content="About The Game Plan — sports analytics and NCAA research." />
+  <meta name="description" content="Henry Davidson — sports analyst inside college athletics, writing about the NCAA's transformation through data." />
   <link rel="stylesheet" href="assets/style.css" />
+  <style>
+    /* About-page specific styles */
+    .about-page-hero {
+      padding: 88px 0 72px;
+      border-bottom: 1px solid var(--border);
+    }
+    .about-page-hero .eyebrow {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 24px;
+    }
+    .about-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: clamp(56px, 10vw, 120px);
+      line-height: 0.92;
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
+      color: var(--text);
+      margin-bottom: 32px;
+    }
+    .about-name em {
+      font-style: normal;
+      color: var(--accent);
+      display: block;
+    }
+    .about-tagline {
+      font-size: 18px;
+      color: var(--text-muted);
+      max-width: 54ch;
+      line-height: 1.7;
+    }
+
+    .about-content {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 80px;
+      align-items: start;
+      padding: 72px 0 88px;
+    }
+
+    .about-prose h2 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: 26px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--text);
+      margin: 48px 0 16px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+    .about-prose h2:first-child { margin-top: 0; }
+
+    .about-prose p {
+      font-size: 17px;
+      color: var(--text-body);
+      line-height: 1.85;
+      margin-bottom: 20px;
+      max-width: 62ch;
+    }
+
+    /* Sidebar */
+    .about-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      position: sticky;
+      top: 88px;
+    }
+    .sidebar-block {
+      padding: 24px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .sidebar-block:first-child { padding-top: 0; }
+    .sidebar-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 10px;
+    }
+    .sidebar-value {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    .sidebar-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 4px;
+    }
+    .sidebar-tag {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+      padding: 4px 10px;
+    }
+
+    @media (max-width: 800px) {
+      .about-content { grid-template-columns: 1fr; gap: 48px; }
+      .about-sidebar { position: static; }
+    }
+  </style>
 </head>
 <body>
 
@@ -26,35 +143,67 @@
     </div>
   </header>
 
-  <!-- ─── About Content ────────────────────────────── -->
-  <section class="article-hero">
+  <!-- ─── Hero ─────────────────────────────────────── -->
+  <section class="about-page-hero">
     <div class="container">
-      <span class="card-tag">About</span>
-      <h1 class="article-title">About The Game Plan</h1>
+      <p class="eyebrow">About</p>
+      <h1 class="about-name">Henry<em>Davidson.</em></h1>
+      <p class="about-tagline">Working inside college athletics. Writing about the numbers that explain what's actually happening to the sport.</p>
     </div>
   </section>
 
+  <!-- ─── Content ──────────────────────────────────── -->
   <div class="container">
-    <div class="article-body">
+    <div class="about-content">
 
-      <p>The Game Plan is a sports analytics blog focused on the structural transformation happening across college athletics — the economics of the transfer portal, NIL markets, the House v. NCAA settlement, conference realignment, and everything downstream of those changes.</p>
+      <!-- Main prose -->
+      <div class="about-prose">
 
-      <h2>The Focus</h2>
+        <h2>Who I am</h2>
+        <p>I work in college athletics and have a front-row seat to an industry that's rewriting its own rules in real time. The House v. NCAA settlement, the open transfer portal, NIL markets, conference realignment — the structural changes landing on college sports right now are genuinely historic, and most of the coverage treats them like a news feed instead of a story.</p>
+        <p>The Game Plan is my attempt to slow down and actually analyze what's happening — using data, not takes.</p>
 
-      <p>The emphasis here is on the <strong>changing NCAA landscape</strong>: what the data actually shows about competitive balance, roster construction strategies, and how programs are adapting (or failing to) in real time. That means a lot of work on transfer portal valuation, revenue sharing allocation, and the gap between what programs say they're doing and what their moves reveal.</p>
+        <h2>Why this site</h2>
+        <p>Three reasons, honestly. First, I do this kind of analysis anyway and wanted somewhere to put it that isn't a shared drive. Second, I think the transfer portal era and the revenue-sharing era are going to look very different in ten years than they do right now, and I want a record of what the numbers were actually showing as it unfolded. Third, this is a portfolio — a public record of how I think about football, basketball, and the business of college sports.</p>
+        <p>If you're a coach, an analyst, or someone building out a staff and you like what you see here, my contact is below.</p>
 
-      <h2>The Approach</h2>
+        <h2>Coverage focus</h2>
+        <p>The primary lens is football and basketball, but the more interesting thread running through everything is the economics: how programs are allocating NIL resources, how roster construction decisions get made under a revenue-sharing cap, and what the transfer portal actually rewards versus what conventional wisdom thinks it rewards.</p>
+        <p>I'm particularly interested in mid-major programs — the ones operating without a blank check, where every analytical edge actually matters.</p>
 
-      <p>Each piece is an attempt to use publicly available numbers — portal data, recruiting composites, advanced efficiency metrics, financial disclosures — to say something specific and falsifiable. The goal is analysis, not commentary. If a take can't be grounded in data, it doesn't belong here.</p>
+        <h2>Get in touch</h2>
+        <p>Questions, pushback, data corrections, or just something worth digging into — I'm reachable at <a href="mailto:thehenrydmusic@gmail.com" style="color: var(--accent); border-bottom: 1px solid var(--accent-line);">thehenrydmusic@gmail.com</a>.</p>
 
-      <h2>About Me</h2>
+      </div>
 
-      <!-- Replace this section with your own bio -->
-      <p>Add a brief bio here — your background in sports, analytics, or whatever drew you to this space. Where you've worked, what you've studied, what you're paying attention to.</p>
-
-      <h2>Contact</h2>
-
-      <p>Questions, pushback, or tips on something worth digging into — reach out at <a href="mailto:thehenrydmusic@gmail.com">thehenrydmusic@gmail.com</a>.</p>
+      <!-- Sidebar -->
+      <aside class="about-sidebar">
+        <div class="sidebar-block">
+          <p class="sidebar-label">Role</p>
+          <p class="sidebar-value">College Athletics</p>
+        </div>
+        <div class="sidebar-block">
+          <p class="sidebar-label">Location</p>
+          <p class="sidebar-value">Toledo, OH</p>
+        </div>
+        <div class="sidebar-block">
+          <p class="sidebar-label">Coverage</p>
+          <div class="sidebar-tags">
+            <span class="sidebar-tag">Football</span>
+            <span class="sidebar-tag">Basketball</span>
+            <span class="sidebar-tag">Transfer Portal</span>
+            <span class="sidebar-tag">NIL</span>
+            <span class="sidebar-tag">Revenue Sharing</span>
+            <span class="sidebar-tag">Mid-Majors</span>
+          </div>
+        </div>
+        <div class="sidebar-block">
+          <p class="sidebar-label">Contact</p>
+          <p class="sidebar-value">
+            <a href="mailto:thehenrydmusic@gmail.com" style="color: var(--accent);">thehenrydmusic@gmail.com</a>
+          </p>
+        </div>
+      </aside>
 
     </div>
   </div>
@@ -64,7 +213,7 @@
     <div class="container">
       <div class="footer-inner">
         <span class="footer-logo">The Game<em>plan</em></span>
-        <span class="footer-copy">© 2026 · Sports analytics &amp; NCAA research</span>
+        <span class="footer-copy">© 2026 · Henry Davidson</span>
       </div>
     </div>
   </footer>

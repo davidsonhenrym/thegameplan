@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Positional Value in College Football — The Game Plan</title>
+  <meta name="description" content="Introducing EWA and Value Over Replacement: a data-backed framework for positional investment in the revenue-sharing era." />
+  <link rel="stylesheet" href="../assets/style.css" />
+</head>
+<body>
+
+  <div id="reading-progress" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+
+  <!-- ─── Header ──────────────────────────────────── -->
+  <header>
+    <div class="container">
+      <div class="header-inner">
+        <a href="../index.html" class="logo">The Game<em>plan</em></a>
+        <button class="menu-toggle" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+        <nav>
+          <a href="../index.html">Home</a>
+          <a href="../articles.html" class="active">Articles</a>
+          <a href="../about.html">About</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- ─── Article Hero ────────────────────────────── -->
+  <section class="article-hero">
+    <div class="container">
+      <a href="../articles.html" class="back-link">All Articles</a>
+      <span class="card-tag">Football</span>
+      <h1 class="article-title">Positional Value in College Football</h1>
+      <div class="article-meta">
+        <span>Henry Davidson</span>
+        <span class="divider">·</span>
+        <span>May 13, 2026</span>
+        <span class="divider">·</span>
+        <span>12 min read</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Article Body ─────────────────────────────── -->
+  <div class="container">
+    <div class="article-body">
+
+      <p>College football is in the middle of a resource-allocation problem disguised as a recruiting problem. With revenue sharing capped at roughly $22M and no agreed-upon framework for spending it, programs are making positional investment decisions on instinct. This article introduces Expected Wins Added (EWA) — a single-number player valuation built from advanced data across all Division I football players — and uses it to derive a defensible framework for positional value.</p>
+
+      <p>After adjusting EWA for replacement level and measuring value over replacement (VOR), the data produces three clear tiers: quarterback in a class of its own at roughly 2.3 wins above replacement for a P4-tier starter; a second tier of edge rushers and skill positions in the 0.7 to 0.9 range; and a third tier of offensive line, linebacker, and back-end coverage in the 0.3 to 0.5 range.</p>
+
+      <p>A team-level win-correlation analysis appears to contradict these findings at first glance, with quarterback correlating less strongly than wide receiver or running back. The discrepancy is resolved by understanding that VOR measures the leverage of an upgrade while correlation measures predictive power across the league. They are different questions with different answers, and resource allocation should follow the leverage answer.</p>
+
+      <div class="stat-callout">
+        <div class="stat-number">2.32</div>
+        <div class="stat-label">Wins above replacement for a P4-tier starting quarterback — roughly three times the next-most-valuable position. The floor under the position is a trapdoor: the median backup produces negative wins.</div>
+      </div>
+
+      <h2>How I Got Here</h2>
+
+      <p>As a lifelong football fan and stats nerd, I have spent years obsessing over what the numbers actually say about performance and trying to figure out how analytics can improve forecasting in sports. As a 12-year-old, this materialized into multiple fantasy football championships — ripping the heart out of my dad's friends and coworkers as they had to admit that a child was beating them. Now that I have somehow lucked into a profession in sports analytics, I have the tools to broaden those instincts and use data to help make meaningful decisions in the world of college athletics.</p>
+
+      <p>Over the past few months I have been trying to understand the transfer portal and NIL/revenue sharing at a level that could actually make me useful. I am far from done, but I finally feel like I have created a metric that can help identify and understand positional value in today's era of college football.</p>
+
+      <p>Regardless of what everyone says, the end goal is to win games. Some larger schools have elected to simply spend, which is honestly a pretty solid strategy given there is not a real cap despite what you may hear. That approach has shown its benefits. But smaller schools with limited financial resources cannot feasibly implement it. This has led to a scramble drill across the G6: some schools are collecting P4 dropouts, others are doubling down on high school recruiting, others are targeting FCS, JUCO, D2, and D3 standouts.</p>
+
+      <p>I do not think there is one right answer to that question. As a current member of the G6, I think the best way to compete in the portal is to combine analytics with a strong coaching and personnel staff to find players that generate wins. Wins are all I care about. That, and character — but this is an analytics site, so I will leave that for another day.</p>
+
+      <h2>Building EWA</h2>
+
+      <p>How do you know if a player generates wins? Baseball has WAR, basketball has win shares, football has EPA to some extent. None of those were quite what I was looking for. I wanted one number that told me how many wins a player theoretically generated for his team.</p>
+
+      <p>Using advanced analytics from several sources, I landed on EWA: Expected Wins Added. I used regression and random-forest modeling to determine the most important features by position since the transfer portal era began, then scored every player in the country.</p>
+
+      <p>Initially the results were skewed — random players were popping up with inflated EWA totals. After digging back in, I determined the issue: I needed a snap-share factor. A great rate stat across 40 snaps does not actually generate wins. Once I weighted for playing time, the numbers stabilized into something usable.</p>
+
+      <h2>From One Number to Positional Value</h2>
+
+      <p>Once EWA was in a usable state, I had a number for every player. But a number by itself does not tell you where to spend money, and that is the question I actually need to answer. If I am sitting on a finite revenue-share budget and trying to figure out whether to target a quarterback, a left tackle, or three corners, "this guy has a 2.4 EWA" does not get me there. I need to know what 2.4 EWA is worth relative to what I could find for free.</p>
+
+      <p>This is where baseball analytics is honestly miles ahead of football, and where I borrowed shamelessly. The concept is value over replacement. Forget total EWA. What matters is how much better your player is than the next one you could plug in. A 3.0 EWA quarterback is a totally different value proposition than a 3.0 EWA wide receiver, because the backup quarterback you would play if yours got hurt is almost certainly going to lose you games, while the backup receiver is probably fine.</p>
+
+      <p>Defining replacement level took some work. My first instinct was to grab the median EWA of players ranked 60 to 100 at each position — the "good FBS backup tier." That worked for most positions but broke for quarterback, because there is only one starter per team. The 60-to-100 ranked quarterbacks in FBS are not backups; they are starters at the weakest programs in the country, still getting most of the snaps. Not the same population.</p>
+
+      <p>The fix was to define replacement by snap share, not rank: players with a snap share between 15% and 40% — actual rotational depth across every position. Here is what emerged:</p>
+
+      <p class="table-caption">Replacement-Level EWA by Position</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Position</th>
+            <th>Replacement EWA</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>WR</td><td>0.15</td></tr>
+          <tr><td>RB</td><td>0.13</td></tr>
+          <tr><td>TE</td><td>0.10</td></tr>
+          <tr><td>DE</td><td>0.10</td></tr>
+          <tr><td>CB</td><td>0.09</td></tr>
+          <tr><td>DT</td><td>0.05</td></tr>
+          <tr><td>LB</td><td>0.05</td></tr>
+          <tr><td>OT</td><td>0.04</td></tr>
+          <tr><td>IOL</td><td>0.04</td></tr>
+          <tr><td>S</td><td>0.03</td></tr>
+          <tr class="highlight"><td>QB</td><td>-0.19</td></tr>
+        </tbody>
+      </table>
+
+      <p>The quarterback number jumped out immediately. Replacement-level quarterbacks are actively bad — the median backup at the position is producing negative wins. Every other position has a replacement-tier player who at least breaks even. This is the first data-backed answer I have had to a question that gets thrown around constantly: how much more valuable is a quarterback than every other position? The answer is that it is not even close, and it is not just because elite quarterbacks are great. It is because the floor under the position is a trapdoor.</p>
+
+      <h2>Building the Tier System</h2>
+
+      <p>With replacement EWA defined, I calculated value over replacement for every player in the country, then averaged it across the top 32 at each position. The top 32 roughly approximates a P4 starting tier — the population I would actually be competing with on the portal market.</p>
+
+      <p class="table-caption">Value Over Replacement — Top 32 vs. Ranks 33-64</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Position</th>
+            <th>Top 32 VOR</th>
+            <th>Ranks 33-64 VOR</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="highlight"><td>QB</td><td>2.32</td><td>0.77</td></tr>
+          <tr><td>DE</td><td>0.94</td><td>0.59</td></tr>
+          <tr><td>WR</td><td>0.89</td><td>0.60</td></tr>
+          <tr><td>RB</td><td>0.75</td><td>0.47</td></tr>
+          <tr><td>TE</td><td>0.74</td><td>0.43</td></tr>
+          <tr><td>CB</td><td>0.60</td><td>0.40</td></tr>
+          <tr><td>DT</td><td>0.55</td><td>0.37</td></tr>
+          <tr><td>OT</td><td>0.45</td><td>0.27</td></tr>
+          <tr><td>IOL</td><td>0.34</td><td>0.21</td></tr>
+          <tr><td>LB</td><td>0.33</td><td>0.20</td></tr>
+          <tr><td>S</td><td>0.32</td><td>0.21</td></tr>
+        </tbody>
+      </table>
+
+      <p>The picture is clean. A P4-tier starting quarterback is worth roughly three times the next-most-valuable position, and the gap does not really close as you move down to the second tier. After quarterback, there is a cluster of edge rushers, receivers, backs, and tight ends sitting in the 0.7 to 0.9 range. Then everyone else.</p>
+
+      <p>Two things worth flagging. First, the edge rusher result lines up with everything the NFL has been telling us for a decade: pass rush wins games. It is reassuring when the data agrees with the eye test. Second, the trench and back-end cluster — OT, IOL, LB, S — all sitting around 0.3 to 0.5 VOR is going to be controversial. I am not saying offensive linemen do not matter. I am saying the marginal difference between a top-32 offensive tackle and a replacement-level one, measured in wins, is smaller than at almost any other position. That has real implications for how you spend.</p>
+
+      <h2>A Result That Looks Like It Breaks the Thesis</h2>
+
+      <p>Before accepting any of this, I wanted to stress-test it. The VOR framework says quarterback is in a tier of its own. The obvious sanity check: across all 300+ FBS programs, does a team's quarterback EWA actually predict wins better than any other position?</p>
+
+      <p>It does not. When I correlated each position's team-level EWA against team wins across the 2025 FBS sample, wide receiver led at r = 0.70, followed by running back at 0.66, edge rusher at 0.60. Quarterback came in near the bottom at 0.48.</p>
+
+      <p>At first glance this looks like it breaks the entire VOR argument. It does not — but the reason is worth understanding, because it explains why so much positional-value debate in football goes sideways.</p>
+
+      <blockquote>
+        <p>VOR and correlation answer different questions. VOR asks: if I have an elite player here instead of a replacement-level one, what is the win difference? Correlation asks: how well does this position's EWA predict team wins across the league? Those sound similar. They are not.</p>
+      </blockquote>
+
+      <p>The quarterback correlation is suppressed by two structural issues. First, 207 of 295 starting quarterbacks in my sample have negative EWA. When most of the distribution is bunched at the same level, the variable cannot explain much variance — even though the gap from the 95th percentile to the median is massive. Second, quarterback EWA is partly a measure of the team around him. A talented QB at a bad program plays behind a bad line, throws to bad receivers, and faces good defenses on a difficult schedule. His EWA gets pulled down by his environment, which weakens the correlation with team wins specifically.</p>
+
+      <p>The skill positions correlate better with wins because their EWA distribution is more spread out and less contaminated by team context. They are better predictors of team quality. That is a different thing than being the higher-leverage allocation.</p>
+
+      <p>This is the same dynamic that explains why NFL teams pay quarterbacks $55M a year even though season-level QB-to-wins correlation is not sky-high. The marginal value of an elite quarterback is the highest-leverage roster decision available. The fact that team-level QB EWA is a mediocre predictor of wins is a feature of the data structure, not evidence against the premium.</p>
+
+      <p>Where the correlation analysis is genuinely useful is at the group level. Grouping positions into functional units cleans up some of the noise:</p>
+
+      <p class="table-caption">Position Group Win Correlation — 2025 FBS</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Position Group</th>
+            <th>r</th>
+            <th>R²</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Skill (QB / WR / RB / TE)</td><td>0.72</td><td>0.52</td></tr>
+          <tr><td>Coverage (CB / S / LB)</td><td>0.71</td><td>0.50</td></tr>
+          <tr><td>Defensive Line (DE / DT)</td><td>0.66</td><td>0.44</td></tr>
+          <tr><td>Offensive Line (OT / IOL)</td><td>0.55</td><td>0.30</td></tr>
+        </tbody>
+      </table>
+
+      <p>Skill positions and coverage units at the top, defensive line in the middle, offensive line at the bottom. That tracks with the VOR findings and tells me the framework is internally consistent: positions that move EWA at the margin also move wins at the team level, with the quarterback caveat noted above.</p>
+
+      <h2>What This Means for a G6 Program</h2>
+
+      <p>The math works out to a three-tier framework for how to allocate a finite revenue-share budget:</p>
+
+      <p class="table-caption">Three-Tier Allocation Framework</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Tier</th>
+            <th>Positions</th>
+            <th style="text-align:left;">Allocation Posture</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="highlight">
+            <td>1</td>
+            <td>QB</td>
+            <td style="text-align:left; color: var(--text-body); font-family: 'Barlow', sans-serif; font-size: 15px; font-weight: 400;">Pay top of market. Retention spend is non-negotiable.</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>DE, WR, RB, TE</td>
+            <td style="text-align:left;">Allocate aggressively. Do not get into bidding wars you cannot win.</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>CB, DT, OT, IOL, LB, S</td>
+            <td style="text-align:left;">Volume game. Develop in-house, find G6-to-G6 transfers, level up FCS talent.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>Pay top-of-market for a quarterback. If you find one, do not be cute about it. The VOR gap is so large that overpaying for an elite quarterback is mathematically the highest-leverage decision you can make. It is also the position a G6 program is most likely to lose to a P4 school, which makes retention spend at quarterback borderline irrational to skip.</p>
+
+      <p>Allocate aggressively — but not stupidly — on the second tier. Edge rushers, receivers, backs, tight ends are real difference-makers, but the VOR gap between a great one and a good one is roughly a third of what it is at quarterback. Pay competitively; do not chase markets you cannot win.</p>
+
+      <p>Find the third tier on the portal floor or in high school. Tackles, guards, linebackers, safeties — positions where per-player VOR is modest but the volume need is real. You need five offensive linemen, four linebackers, multiple safeties. Total positional spend here can still be meaningful, but per player, this is where you take value plays: develop in-house, target G6-to-G6 transfers, find the FCS players who can level up.</p>
+
+      <p>Is any of this revolutionary? Probably not. Most coaches I work with would intuit some version of this at lunch. But intuition does not survive a roster meeting where everyone is fighting for their position group's budget. Numbers do. And the numbers are telling a coherent story: quarterback is its own tier, edge and skill positions are the second tier, and everything else is a volume game.</p>
+
+      <p>That is the framework I am going to keep building on. Next stop is portfolio effects — because the VOR of one great corner is one thing. The VOR of having three of them is not 3x. That math gets interesting.</p>
+
+    </div>
+  </div>
+
+  <!-- ─── Footer ───────────────────────────────────── -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <span class="footer-logo">The Game<em>plan</em></span>
+        <span class="footer-copy">© 2026 · Henry Davidson</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../assets/main.js"></script>
+</body>
+</html>

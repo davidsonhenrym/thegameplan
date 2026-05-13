@@ -2,25 +2,33 @@
 
 /* ─── Design tokens ─────────────────────────────────────────── */
 :root {
-  /* Backgrounds: warm charcoal — readable without sacrificing the dark feel */
-  --bg:            oklch(19%  0.008 75);
-  --surface:       oklch(23%  0.009 75);
-  --surface-2:     oklch(27%  0.010 75);
+  /* Backgrounds: warm off-white — comfortable for long-form reading */
+  --bg:            oklch(97%  0.008 85);
+  --surface:       oklch(99%  0.003 85);
+  --surface-2:     oklch(93%  0.014 85);
 
   /* Borders */
-  --border:        oklch(32%  0.009 75);
-  --border-hi:     oklch(42%  0.009 75);
+  --border:        oklch(88%  0.012 85);
+  --border-hi:     oklch(76%  0.014 85);
 
-  /* Amber accent — OKLCH, perceptually uniform */
-  --accent:        oklch(78%  0.15  80);
-  --accent-lo:     oklch(78%  0.15  80 / 0.12);
-  --accent-line:   oklch(78%  0.15  80 / 0.28);
+  /* Amber accent — darkened for WCAG contrast on light backgrounds */
+  --accent:        oklch(47%  0.18  65);
+  --accent-lo:     oklch(47%  0.18  65 / 0.10);
+  --accent-line:   oklch(47%  0.18  65 / 0.28);
 
   /* Text scale */
-  --text:          oklch(95%  0.004 75);
-  --text-body:     oklch(83%  0.004 75);
-  --text-muted:    oklch(63%  0.005 75);
-  --text-dim:      oklch(45%  0.006 75);
+  --text:          oklch(16%  0.008 75);
+  --text-body:     oklch(28%  0.008 75);
+  --text-muted:    oklch(46%  0.008 75);
+  --text-dim:      oklch(66%  0.008 75);
+
+  /* Dark surface tokens — used by hero, footer, about hero */
+  --dark-bg:       oklch(14%  0.008 75);
+  --dark-surface:  oklch(19%  0.008 75);
+  --dark-border:   oklch(28%  0.008 75);
+  --dark-text:     oklch(95%  0.004 75);
+  --dark-muted:    oklch(62%  0.005 75);
+  --dark-accent:   oklch(78%  0.15  80);
 
   --max-w:  1120px;
 }
@@ -64,7 +72,7 @@ header {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: oklch(19% 0.008 75 / 0.94);
+  background: oklch(97% 0.008 85 / 0.96);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--border);
@@ -205,10 +213,10 @@ nav a:hover, nav a.active {
 }
 .btn-primary {
   background: var(--accent);
-  color: oklch(19% 0.008 75);
+  color: oklch(97% 0.004 85);
 }
 .btn-primary:hover {
-  background: oklch(83% 0.14 80);
+  background: oklch(42% 0.18 65);
   transform: translateY(-1px);
 }
 .btn-ghost {
@@ -669,6 +677,38 @@ footer {
 }
 .back-link::before { content: '←'; font-size: 14px; }
 .back-link:hover { color: var(--accent); }
+
+/* ─── Dark sections (hero, footer, about hero) ───────────────── */
+.hero {
+  background: var(--dark-bg);
+  border-bottom-color: var(--dark-border);
+}
+.hero .hero-eyebrow { color: var(--dark-accent); }
+.hero .hero-headline { color: var(--dark-text); }
+.hero .hero-headline em { color: var(--dark-accent); }
+.hero .hero-sub { color: var(--dark-muted); }
+.hero .btn-primary { background: var(--dark-accent); color: var(--dark-bg); }
+.hero .btn-primary:hover { background: oklch(83% 0.14 80); }
+.hero .btn-ghost { color: var(--dark-muted); border-color: var(--dark-border); }
+.hero .btn-ghost:hover { color: var(--dark-text); border-color: oklch(50% 0.006 75); }
+
+footer {
+  background: var(--dark-bg);
+  border-top-color: var(--dark-border);
+}
+.footer-logo { color: oklch(40% 0.006 75); }
+.footer-logo em { color: var(--dark-accent); opacity: 0.5; }
+.footer-copy { color: oklch(40% 0.006 75); }
+
+/* About page hero inherits .hero dark treatment via the class */
+.about-page-hero {
+  background: var(--dark-bg);
+  border-bottom-color: var(--dark-border);
+}
+.about-page-hero .eyebrow { color: var(--dark-accent); }
+.about-name { color: var(--dark-text); }
+.about-name em { color: var(--dark-accent); }
+.about-tagline { color: var(--dark-muted); }
 
 /* ─── Animations ─────────────────────────────────────────────── */
 @keyframes fadeUp {

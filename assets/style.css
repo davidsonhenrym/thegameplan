@@ -428,6 +428,36 @@ nav a:hover, nav a.active {
 }
 .about-body p:last-child { margin-bottom: 0; }
 
+.about-details {
+  margin-top: 28px;
+  border-top: 1px solid var(--border);
+}
+.about-detail {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 16px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+  align-items: baseline;
+}
+.about-detail-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+.about-detail-value {
+  font-size: 15px;
+  color: var(--text-muted);
+}
+.about-detail-value a {
+  color: var(--accent);
+  transition: opacity 0.18s;
+}
+.about-detail-value a:hover { opacity: 0.75; }
+
 /* ─── Footer ─────────────────────────────────────────────────── */
 footer {
   border-top: 1px solid var(--border);
